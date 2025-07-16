@@ -67,11 +67,8 @@ interface ManagedGrafanas {
   update is ArmCustomPatchAsync<
     ManagedGrafana,
     PatchModel = ManagedGrafanaUpdateParameters,
-    Response = ArmResponse<ManagedGrafana> | (ArmAcceptedLroResponse<LroHeaders = ArmAsyncOperationHeader<FinalResult = ManagedGrafana> &
-      Azure.Core.Foundations.RetryAfterHeader> & {
-      @bodyRoot
-      _: ManagedGrafana;
-    })
+    LroHeaders = ArmAsyncOperationHeader<FinalResult = ManagedGrafana> &
+      Azure.Core.Foundations.RetryAfterHeader
   >;
 
   /**

@@ -59,18 +59,13 @@ interface ManagedGrafanas {
   /**
    * Update a workspace for Grafana resource.
    */
-  #suppress "@azure-tools/typespec-azure-resource-manager/lro-location-header" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   #suppress "@azure-tools/typespec-azure-core/no-openapi" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
-  #suppress "@azure-tools/typespec-azure-resource-manager/no-response-body" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
   @patch(#{ implicitOptionality: false })
   @operationId("Grafana_Update")
-  update is ArmCustomPatchSync<
+  update is ArmCustomPatchAsync<
     ManagedGrafana,
     PatchModel = ManagedGrafanaUpdateParameters,
-    Response = ArmResponse<ManagedGrafana> | (AcceptedResponse & {
-      @bodyRoot
-      _: ManagedGrafana;
-    })
+    Response = ArmResponse<ManagedGrafana>
   >;
 
   /**
